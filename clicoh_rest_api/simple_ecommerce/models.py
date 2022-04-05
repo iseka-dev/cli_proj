@@ -3,12 +3,33 @@ from django.db import models
 # Create your models here.
 
 class Product(models.Model):
+    """
+    A class to represent products.
+
+    ...
+
+    Attributes
+    ----------
+    id : str
+        product id
+
+    name : int
+        product name
+
+    price : float
+        product price
+
+    stock : int
+        amount of available products
+    """
+
     id = models.CharField(max_length=64, primary_key=True)
     name = models.CharField(max_length=50,null=True, blank=True)
     price = models.FloatField(null=True, blank=True)
     stock = models.IntegerField(null=True, blank=True)
 
 class Order(models.Model):
+    
     id = models.IntegerField(primary_key=True)
     date_time = models.DateTimeField(null=True, blank=True)
 
