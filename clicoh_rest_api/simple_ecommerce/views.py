@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from rest_framework.viewsets import ModelViewSet
+from .serializers import ProductSerializer, OrderSerializer
 
 # Create your views here.
 
@@ -14,3 +15,5 @@ class OrderViewSet(ModelViewSet):
     """
     A simple ViewSet for viewing and editing orders.
     """
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializer
