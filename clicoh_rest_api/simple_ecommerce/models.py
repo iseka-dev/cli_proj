@@ -86,11 +86,3 @@ class OrderDetail(models.Model):
         null=True,
         blank=True
     )
-
-    """@receiver(pre_save, sender='simple_ecommerce.OrderDetail')
-    def check_repeated_product(instance, **kwargs):
-        product = instance.product
-        quantity = instance.quantity
-        product.stock += quantity
-        product.save()
-        return print('stock has been updated')"""
