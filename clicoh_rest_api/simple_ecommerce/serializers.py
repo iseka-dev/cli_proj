@@ -34,6 +34,17 @@ class OrderSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         detail = validated_data.pop('details')
         order = Order.objects.create(**validated_data)
+        if product.stock < serializer.validated_data['details']['quantity']:
+            raise ValidationError(
+                'Stock Is Not Enough'
+            )
+        if not OrderDetail.objects.filter(
+            order=order,
+            product=detail['product']
+        ).exists():
+            raise ValidationError(
+                'This product has been already added to your cart'
+            )
         order_detail = OrderDetail.objects.create(
             order=order,
             quantity=detail['quantity'],
